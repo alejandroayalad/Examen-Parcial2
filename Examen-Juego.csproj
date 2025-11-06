@@ -8,11 +8,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Cartas/" />
-    <Folder Include="ConjuntoDeCartas/" />
-    <Folder Include="Juego/" />
-    <Folder Include="Jugador/" />
-  </ItemGroup>
-
 </Project>
