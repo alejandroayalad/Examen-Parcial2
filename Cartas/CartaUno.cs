@@ -12,7 +12,7 @@ public enum TipoCarta
     Bloqueo
 }
 
-public enum CambioColor
+public enum Color
 {
     Rojo,
     Verde,
