@@ -4,7 +4,7 @@ namespace Examen_Juego.Cartas;
 
 public interface ICarta
 {
-    void MostrarInformacion
+    void MostrarInformacion();
 }
 
 public class Carta
