@@ -1,7 +1,7 @@
-using Examen_Juego.Juego;
+
 using System;
 
-namespace Examen_Juego.Cartas;
+
 
 public enum TipoCarta
 {

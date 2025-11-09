@@ -1,6 +1,5 @@
 using System;
 
-namespace Examen_Juego.Cartas;
 
 public enum Palo
 {
