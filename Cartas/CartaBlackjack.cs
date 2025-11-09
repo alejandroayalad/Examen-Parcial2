@@ -31,5 +31,5 @@ As
 
 public class CartaBlackjack
 {
-  
+  //LOL
 }
