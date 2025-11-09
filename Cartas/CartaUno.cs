@@ -1,3 +1,4 @@
+using Examen_Juego.Juego;
 using System;
 
 namespace Examen_Juego.Cartas;
@@ -18,6 +19,16 @@ public enum Color
     Verde,
     Amarillo,
     Azul
+}
+
+public interface IEfecto
+{
+    void EjecutarEfecto(IGestorJuegoUno gestor, Color? color);
+}
+
+public interface IReglaJuego
+{
+    bool EsMovimientoValido(CartaUno cartaJugador, CartaUno cartaDescarte, Color? colorActual);
 }
 
 public class CartaUno
