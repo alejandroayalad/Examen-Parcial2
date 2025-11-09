@@ -16,7 +16,7 @@ public interface IGestorJuegoUno
     void InvertirSentido();
     void SaltarTurnoSiguiente();
     void SiguienteJugadorRoba(int cantidad);
-    void EstablecerColor(Color? color);
+    void EstablecerColorActual(Color? color);
 }
 
 public class JuegoUno
