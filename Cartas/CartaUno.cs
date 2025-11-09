@@ -31,7 +31,9 @@ public interface IReglaJuego
     bool EsMovimientoValido(CartaUno cartaJugador, CartaUno cartaDescarte, Color? colorActual);
 }
 
+
+
 public class CartaUno
 {
-
+    //minimal implementation
 }

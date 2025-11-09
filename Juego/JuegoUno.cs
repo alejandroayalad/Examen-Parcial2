@@ -1,5 +1,5 @@
 using System;
-using System.Drawing;
+using Examen_Juego.Cartas;
 
 namespace Examen_Juego.Juego;
 
@@ -16,10 +16,13 @@ public interface IGestorJuegoUno
     void InvertirSentido();
     void SaltarTurnoSiguiente();
     void SiguienteJugadorRoba(int cantidad);
-    void EstablecerColor(Color color);
+    void EstablecerColor(Color? color);
 }
 
 public class JuegoUno
 {
 
+
 }
+
+
