@@ -1,6 +1,6 @@
 using System;
 
-namespace Examen_Juego.Cartas;
+
 
 public interface ICarta
 {

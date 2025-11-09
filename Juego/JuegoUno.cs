@@ -1,7 +1,7 @@
 using System;
-using Examen_Juego.Cartas;
 
-namespace Examen_Juego.Juego;
+
+
 
 public interface IContextoJugadorUno : IContextoJuego
 {
