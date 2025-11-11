@@ -13,7 +13,7 @@ public class PilaDeDescarte : ConjuntoDeCartas
     {
         if (cartas.Count == 0)
         {
-            throw new Exception("La pila de descarte esta vacía");
+            throw new Exception("La pila de descarte esta vacÃ­a");
         }
         return cartas[cartas.Count - 1];
     }

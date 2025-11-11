@@ -2,7 +2,7 @@ using System;
 
 
 
-public interface IContextoBlackJack : IContextoJuego
+public interface IContextoBlackjack : IContextoJuego
 {
     int ObtenerPuntuajeDealer();
 }

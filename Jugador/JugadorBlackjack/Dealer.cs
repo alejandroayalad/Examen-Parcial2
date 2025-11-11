@@ -14,29 +14,29 @@ public class Dealer : JugadorBlackjack
         Console.WriteLine("El dealer inicia la ronda");
         mazo.Barajar();
         Console.WriteLine("El dealer ha barajado el mazo");
-        for int i = 0; i < 2; i++)
+        for (int i = 0; i < 2; i++)
         {
             foreach (var jugador in jugadores)
             {
                 ICarta cartaRobada = mazo.RobarCarta();
-                jugador.AñadirCartaAMano(cartaRobada);
+                jugador.AÃ±adirCartaAMano(cartaRobada);
             }
         }
         for (int i = 0; i < 2;i++)
         {
             ICarta carta = mazo.RobarCarta();
-            AñadirCartaAMano(carta);
+            AÃ±adirCartaAMano(carta);
         }
         Console.WriteLine("Dealer ha repartido 2 cartas a todos los participantes (incluyendose).");
 
     }
-    public override void JugarTurno(IContextoBlackJack contexto)
+    public override void JugarTurno(IContextoBlackjack contexto)
     {
         Console.WriteLine("Turno del dealer.");
-        while (ObtenerPuntuajeMano() <17)
+        while (ObtenerPuntajeMano() < 17)
         {
-            ICarta cartaRobada = contexto.RobarCartaMazo();
-            this.AñadirCartaAMano(cartaRobada);
+            ICarta cartaRobada = contexto.RobarCartaDelMazo();
+            this.AÃ±adirCartaAMano(cartaRobada);
             Console.WriteLine("El dealer ha terminado su turno");
         }
 

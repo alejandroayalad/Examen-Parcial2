@@ -3,7 +3,7 @@ using System.Security.Cryptography;
 
 
 
-public abstract class JugadorBlackjack : Jugador // Lo mínimo de Jugador BlackJack
+public abstract class JugadorBlackjack : Jugador // Lo mï¿½nimo de Jugador BlackJack
 {
 
     public JugadorBlackjack(int id, string nombre) : base(id, nombre)
@@ -11,9 +11,9 @@ public abstract class JugadorBlackjack : Jugador // Lo mínimo de Jugador BlackJa
         // Base viene de Jugador
     }
 
-    public abstract void JugarTurno(IContextoBlackJack contexto);
+    public abstract void JugarTurno(IContextoBlackjack contexto);
 
-    public int ObtenerPuntuajeMano() //Para la sumatoria de los valores de las cartas del Jugador
+    public int ObtenerPuntajeMano() //Para la sumatoria de los valores de las cartas del Jugador
     {
         int puntuajeBase = 0;
         int numeroDeAses = 0;
@@ -49,7 +49,7 @@ public abstract class JugadorBlackjack : Jugador // Lo mínimo de Jugador BlackJa
         }
         return puntuajeBase;
     }
-    public bool SePasoDe21()//Acaba el juego para el jugador que tiene más de 21
+    public bool SePasoDe21()//Acaba el juego para el jugador que tiene mï¿½s de 21
     {
         return false;
     }

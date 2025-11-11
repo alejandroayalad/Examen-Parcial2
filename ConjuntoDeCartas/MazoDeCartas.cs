@@ -14,7 +14,7 @@ public class MazoDeCartas : ConjuntoDeCartas
     {
         if (cartas.Count == 0)
         {
-            throw new Exception("El mazo de cartas esta vacío.");
+            throw new Exception("El mazo de cartas esta vacÃ­o.");
         }
         ICarta cartaRobada = cartas[cartas.Count - 1];
         cartas.RemoveAt(cartas.Count - 1);

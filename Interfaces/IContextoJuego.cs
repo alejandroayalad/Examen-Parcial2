@@ -3,5 +3,5 @@ using System;
 
 public interface IContextoJuego
 {
-    ICarta RobarCartaMazo();
+    ICarta RobarCartaDelMazo();
 }
