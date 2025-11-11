@@ -1,21 +1,33 @@
 using System;
 
-
-
-
-
 public class JuegoBlackjack : Juego, IContextoBlackjack
 {
 
-     private Dealer dealer;
-    private List<JugadorBlackjack> jugadoresBlackjack; 
-     
+    private Dealer dealer;
+    private List<JugadorBlackjack> jugadoresBlackjack;
+
     public JuegoBlackjack(Dealer dealer, List<JugadorBlackjack> jugadores, MazoDeCartas mazo) : base(jugadores.Cast<Jugador>().ToList(), mazo)
     {
         this.dealer = dealer;
         this.jugadoresBlackjack = jugadores;
 
     }
+
+    public override void InicializarJuego()
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void JugarRonda()
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void MostrarResultados()
+    {
+        throw new NotImplementedException();
+    }
+
     public int ObtenerPuntuajeDealer()
     {
         throw new NotImplementedException();
@@ -34,5 +46,7 @@ public class JuegoBlackjack : Juego, IContextoBlackjack
     {
         throw new NotImplementedException();
     }
+
     
+
 }
