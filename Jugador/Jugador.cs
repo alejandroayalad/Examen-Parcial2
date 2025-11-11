@@ -4,18 +4,25 @@ namespace Examen_Juego.Jugador;
 
 public abstract class Jugador
 {
-    private int _id;
+    private readonly int _id;
+    private readonly string _nombre;
+    private readonly Mano miMano;
+    
     public int Id
     {
-        get { return _id; }
+        get => _id;
+        init => _id = value;
     }
-
-    protected Mano miMano;
-    protected string _nombre;
-
     public string Nombre
     {
-        get { return _nombre; }
+        get => _nombre;
+        init => _nombre = value;
+    }
+
+     protected Mano MiMano 
+    { 
+        get => miMano;
+        init => miMano = value;
     }
 
     protected Jugador(int id, string nombre)
