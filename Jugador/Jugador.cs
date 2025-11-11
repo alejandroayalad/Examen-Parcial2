@@ -33,7 +33,7 @@ public abstract class Jugador
     }
     public virtual void AñadirCartaAMano(ICarta cartaParaAñadir)
     {
-
+            MiMano.AgregarCarta(cartaParaAñadir);
     }
     public virtual void MostrarEstado()
     {
@@ -41,10 +41,11 @@ public abstract class Jugador
     }
     public virtual List<ICarta> LimpiarMano()
     {
-
+        return MiMano.Limpiar();
     }
     public int ObtenerConteoCartas()
     {
-
+        return MiMano.ContarCartas();
     }
+    
 }
