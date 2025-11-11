@@ -7,8 +7,13 @@ public abstract class JugadorUno : Jugador
 
     public JugadorUno(int id, string nombre) : base(id, nombre)
     {
+        
     }
-    
+    protected Color ElegirColorAleatorio()
+{
+    int colorIndex = random.Next(4);
+    return (Color)colorIndex;
+}
 
     public void GritarUNO()
     {
@@ -20,3 +25,5 @@ public abstract class JugadorUno : Jugador
     public abstract void JugarTurno(IContextoJugadorUno contexto);
 
 }
+
+

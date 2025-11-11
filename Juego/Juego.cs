@@ -16,4 +16,13 @@ public abstract class Juego
         this.mazo = mazo;
         this.juegoTerminado = false;
     }
+
+    public abstract void InicializarJuego();
+    public abstract void JugarRonda();
+    public abstract void MostrarResultados();
+
+    public bool JuegoTerminado()
+    {
+        return juegoTerminado;
+    }
 }
