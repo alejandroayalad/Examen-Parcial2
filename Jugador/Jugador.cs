@@ -24,7 +24,7 @@ public abstract class Jugador
         _nombre = nombre;
         miMano = new Mano();
     }
-    public virtual void AñadirCartaAMano(ICarta cartaParaAñadir)
+    public virtual void AÃ±adirCartaAMano(ICarta cartaParaAÃ±adir)
     {
 
     }
