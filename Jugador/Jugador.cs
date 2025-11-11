@@ -1,6 +1,6 @@
 using System;
 
-namespace Examen_Juego.Jugador;
+
 
 public abstract class Jugador
 {
@@ -47,5 +47,5 @@ public abstract class Jugador
     {
         return MiMano.ContarCartas();
     }
-    
+
 }
