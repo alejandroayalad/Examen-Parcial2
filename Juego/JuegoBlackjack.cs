@@ -1,5 +1,6 @@
 using System;
-
+using System.Collections;
+using System.Collections.Generic;
 public class JuegoBlackjack : Juego, IContextoBlackjack
 {
 
@@ -15,12 +16,52 @@ public class JuegoBlackjack : Juego, IContextoBlackjack
 
     public override void InicializarJuego()
     {
-        throw new NotImplementedException();
+        Console.WriteLine("\n INICIANDO JUEGO DE BLACKJACK \n");
+
+        // Limpiar manos de la ronda anterior
+        dealer.LimpiarMano();
+        
+        foreach (var jugador in jugadoresBlackjack)
+        {
+            jugador.LimpiarMano();
+        }
+
+       
+        dealer.RepartirRonda(mazo, jugadores.Cast<JugadorBlackjack>().ToList());
+        
+        Console.WriteLine("\n--- Estado inicial ---");
+        dealer.MostrarEstado();
+        foreach (var jugador in jugadoresBlackjack)
+        {
+            jugador.MostrarEstado();
+         
+            Console.WriteLine($"Puntaje: {jugador.ObtenerPuntajeMano()}");
+        }
+        
+        juegoTerminado = false;
     }
+    
 
     public override void JugarRonda()
     {
-        throw new NotImplementedException();
+       Console.WriteLine("\n--- TURNOS DE JUGADORES---");
+        
+        foreach (var jugador in jugadoresBlackjack)
+        {
+            
+            if (!jugador.SePasoDe21())
+            {
+                jugador.JugarTurno(this);
+                Console.WriteLine($"Puntaje final de {jugador.Nombre}: {jugador.ObtenerPuntajeMano()}");
+            }
+        }
+
+
+        Console.WriteLine("\n--- TURNO DEL DEALER---");
+        dealer.JugarTurno(this);
+        Console.WriteLine($"Puntaje final del dealer: {dealer.ObtenerPuntajeMano()}");
+        
+        juegoTerminado = true;
     }
 
     public override void MostrarResultados()
