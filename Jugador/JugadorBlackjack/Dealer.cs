@@ -39,8 +39,5 @@ public class Dealer : JugadorBlackjack
             this.AñadirCartaAMano(cartaRobada);
             Console.WriteLine("El dealer ha terminado su turno");
         }
-
     }
-
-
 }

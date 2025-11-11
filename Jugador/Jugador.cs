@@ -4,6 +4,7 @@ using System;
 
 public abstract class Jugador
 {
+    protected static Random random = new Random(); 
     private readonly int _id;
     private readonly string _nombre;
     private readonly Mano miMano;
