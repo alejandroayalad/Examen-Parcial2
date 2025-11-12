@@ -10,10 +10,11 @@ public abstract class JugadorUno : Jugador
         
     }
     protected Color ElegirColorAleatorio()
-{
-    int colorIndex = random.Next(4);
-    return (Color)colorIndex;
-}
+    {
+        int colorIndex = random.Next(4);
+        return (Color)colorIndex;
+    }
+
 
     public void GritarUNO()
     {

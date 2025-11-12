@@ -20,35 +20,35 @@ public class JuegoBlackjack : Juego, IContextoBlackjack
 
         // Limpiar manos de la ronda anterior
         dealer.LimpiarMano();
-        
+
         foreach (var jugador in jugadoresBlackjack)
         {
             jugador.LimpiarMano();
         }
 
-       
+
         dealer.RepartirRonda(mazo, jugadores.Cast<JugadorBlackjack>().ToList());
-        
+
         Console.WriteLine("\n--- Estado inicial ---");
         dealer.MostrarEstado();
         foreach (var jugador in jugadoresBlackjack)
         {
             jugador.MostrarEstado();
-         
+
             Console.WriteLine($"Puntaje: {jugador.ObtenerPuntajeMano()}");
         }
-        
+
         juegoTerminado = false;
     }
-    
+
 
     public override void JugarRonda()
     {
-       Console.WriteLine("\n--- TURNOS DE JUGADORES---");
-        
+        Console.WriteLine("\n--- TURNOS DE JUGADORES---");
+
         foreach (var jugador in jugadoresBlackjack)
         {
-            
+
             if (!jugador.SePasoDe21())
             {
                 jugador.JugarTurno(this);
@@ -60,14 +60,10 @@ public class JuegoBlackjack : Juego, IContextoBlackjack
         Console.WriteLine("\n--- TURNO DEL DEALER---");
         dealer.JugarTurno(this);
         Console.WriteLine($"Puntaje final del dealer: {dealer.ObtenerPuntajeMano()}");
-        
+
         juegoTerminado = true;
     }
 
-    public override void MostrarResultados()
-    {
-        throw new NotImplementedException();
-    }
 
     public int ObtenerPuntuajeDealer()
     {
@@ -83,11 +79,48 @@ public class JuegoBlackjack : Juego, IContextoBlackjack
         return mazo.RobarCarta();
     }
 
-    public ICarta RobarCartaMazo()
+    public override void MostrarResultados()
     {
-        throw new NotImplementedException();
+        Console.WriteLine("\n--*!!! RESULTADOS FINALES !!!*--");
+        
+        int puntajeDealer = dealer.ObtenerPuntajeMano();
+        bool dealerSePaso = dealer.SePasoDe21();
+        
+        Console.WriteLine($"Dealer: {puntajeDealer} puntos {(dealerSePaso ? "(SE PASÓ)" : "")}");
+        
+        foreach (var jugador in jugadoresBlackjack)
+        {
+           
+        
+            int puntajeJugador = jugador.ObtenerPuntajeMano();
+            bool jugadorSePaso = jugador.SePasoDe21();
+            
+            string resultado;
+            if (jugadorSePaso)
+            {
+                resultado = "PIERDE (Se pasó de 21)";
+            }
+            else if (dealerSePaso)
+            {
+                resultado = "GANA (Dealer se pasó)";
+            }
+            else if (puntajeJugador > puntajeDealer)
+            {
+                resultado = "GANA";
+            }
+            else if (puntajeJugador == puntajeDealer)
+            {
+                resultado = "EMPATE";
+            }
+            else
+            {
+                resultado = "PIERDE";
+            }
+            
+            Console.WriteLine($"{jugador.Nombre}: {puntajeJugador} puntos - {resultado}");
+        }
     }
 
-    
+
 
 }

@@ -27,7 +27,7 @@ public abstract class JugadorBlackjack : Jugador // Lo m�nimo de Jugador Black
                 {
                     numeroDeAses++;
                 }
-               // Checa si es As
+                // Checa si es As
                 else
                 {
                     puntuajeBase += valorCarta;
@@ -36,7 +36,7 @@ public abstract class JugadorBlackjack : Jugador // Lo m�nimo de Jugador Black
                 //Si no es, suma el puntuaje de los Enums
             }
         }
-        for (int i= 0; i < numeroDeAses; i++) //Para ver cuando usar 1 y 11 para As
+        for (int i = 0; i < numeroDeAses; i++) //Para ver cuando usar 1 y 11 para As
         {
             if (puntuajeBase + 11 > 21)
             {
@@ -49,8 +49,10 @@ public abstract class JugadorBlackjack : Jugador // Lo m�nimo de Jugador Black
         }
         return puntuajeBase;
     }
+
     public bool SePasoDe21()//Acaba el juego para el jugador que tiene m�s de 21
     {
         return false;
     }
+    
 }
