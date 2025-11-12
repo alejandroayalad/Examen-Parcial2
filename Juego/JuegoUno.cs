@@ -213,12 +213,12 @@ public class JuegoUno : Juego, IContextoJugadorUno, IGestorJuegoUno
             mazo.Barajar();
             
             
-            Console.WriteLine($"DEBUG: Mazo reciclado y barajado. Nuevo conteo del mazo: {mazo.ContarCartas()}");
+            Console.WriteLine($"Mazo reciclado y barajado. Nuevo conteo del mazo: {mazo.ContarCartas()}");
         }
         else
         {
             
-            Console.WriteLine("DEBUG: No hay suficientes cartas en el descarte para reciclar. El mazo no se barajó.");
+            Console.WriteLine("No hay suficientes cartas en el descarte para reciclar. El mazo no se barajó.");
         }
         
     }

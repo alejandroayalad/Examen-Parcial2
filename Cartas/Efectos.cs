@@ -50,7 +50,7 @@ public class EfectoMasCuatro : IEfecto
     }
 }
 
-public class CambioColor : IEfecto
+public class EfectoCambioColor : IEfecto
 {
     public void EjecutarEfecto(IGestorJuegoUno gestor, Color? colorElegido)
     {
