@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 public abstract class JugadorBlackjack : Jugador // Lo m�nimo de Jugador BlackJack
 {
 
+    
     public JugadorBlackjack(int id, string nombre) : base(id, nombre)
     {
         // Base viene de Jugador
