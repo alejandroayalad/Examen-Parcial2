@@ -29,7 +29,7 @@ public class JuegoBlackjack : Juego, IContextoBlackjack
 
         dealer.RepartirRonda(mazo, jugadores.Cast<JugadorBlackjack>().ToList());
 
-        Console.WriteLine("\n--- Estado inicial ---");
+        Console.WriteLine("!--- Estado inicial ---!");
         dealer.MostrarEstado();
         foreach (var jugador in jugadoresBlackjack)
         {
@@ -67,7 +67,7 @@ public class JuegoBlackjack : Juego, IContextoBlackjack
 
     public int ObtenerPuntuajeDealer()
     {
-        throw new NotImplementedException();
+         return dealer.ObtenerPuntajeMano();
     }
 
     public ICarta RobarCartaDelMazo()
