@@ -64,7 +64,7 @@ public abstract class JugadorUno : Jugador
                 }
             }
         }
-        Console.WriteLine($"[DEBUG] {Nombre} - cartas jugables encontradas: {cartasJugables.Count}");
+        Console.WriteLine($" {Nombre} - cartas jugables encontradas: {cartasJugables.Count}");
         return cartasJugables;
     }
 
