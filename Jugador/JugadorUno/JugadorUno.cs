@@ -54,7 +54,7 @@ public abstract class JugadorUno : Jugador
     {
         List<ICarta> cartasJugables = new List<ICarta>();
 
-        foreach (var carta in miMano.Cartas)
+        foreach (var carta in MiMano.Cartas)
         {
             if (carta is CartaUno cartaUnoActual)
             {

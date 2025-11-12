@@ -2,7 +2,7 @@ using System;
 
 
 
-public class JugadorAleatorio
+public class JugadorAleatorio : JugadorUno
 {
 
 }

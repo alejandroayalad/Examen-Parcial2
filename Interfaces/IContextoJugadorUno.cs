@@ -3,7 +3,7 @@ using System;
 public interface IContextoJugadorUno : IContextoJuego
 {
     CartaUno VerCartaDescarte();
-    int ObtenerCantidadCartasEnMano ();
-    void JugarCartaMesa ();
+    int ObtenerCantidadDeCartasEnMano();
+    void JugarCartaEnMesa (ICarta carta, Color? nuevoColor = null);
     Color? ObtenerColor ();
 }

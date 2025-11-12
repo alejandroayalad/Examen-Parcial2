@@ -1,5 +1,4 @@
 using System;
-using System.ComponentModel.Design;
 
 
 
@@ -10,16 +9,16 @@ public class JugadorCalculador : JugadorUno
     }
     public override void JugarTurno(IContextoJugadorUno contexto)
     {
-        Console.WriteLine("${ Nombre} está jugando su turno");
+        Console.WriteLine($"{ Nombre} estÃ¡ jugando su turno");
         var cartaEnDescarte = contexto.VerCartaDescarte();
         Color? colorActual = contexto.ObtenerColor();
         var cartasJugables = ObtenerCartasJugables(cartaEnDescarte, colorActual);
-        Console.WriteLine($"[DEBUG] {Nombre} - cartas jugables encontradas: {cartasJugables.Count}");
-        int cartasDelSiguienteJugador = contexto.ObtenerCantidadCartasEnMano();
+        Console.WriteLine($"{Nombre} - cartas jugables encontradas: {cartasJugables.Count}");
+        int cartasDelSiguienteJugador = contexto.ObtenerCantidadDeCartasEnMano();
 
         ICarta? cartaParaJugar;
 
-        if (cartasJugables.Count() > 0)
+        if (cartasJugables.Count > 0)
         {
             if (cartasDelSiguienteJugador == 1)
 
@@ -38,7 +37,7 @@ public class JugadorCalculador : JugadorUno
             }
             Console.WriteLine($"{Nombre} juega la carta {cartaParaJugar}");
             MiMano.RemoverCarta(cartaParaJugar);
-            contexto.JugarCartaMesa(cartaParaJugar, colorParaPasar);
+            contexto.JugarCartaEnMesa(cartaParaJugar, colorParaPasar);
             GritarUNO();
             Console.WriteLine($"{Nombre} ha terminado su turno");
             return;
@@ -46,9 +45,9 @@ public class JugadorCalculador : JugadorUno
 
         Console.WriteLine($"{Nombre} no tiene una jugada directa, debe robar.");
         ICarta cartaRobada = contexto.RobarCartaDelMazo();
-        this.AñadirCartaAMano(cartaRobada);
+        this.AÃ±adirCartaAMano(cartaRobada);
 
-        if (cartaRobada is CartaUno cRobada && cRobada.EsMovimientoValido(cartaEnDescarte, colorActual)
+        if (cartaRobada is CartaUno cRobada && cRobada.EsMovimientoValido(cartaEnDescarte, colorActual))
         {
             bool jugarCarta = false; 
             if (cartasDelSiguienteJugador == 1)
@@ -65,20 +64,20 @@ public class JugadorCalculador : JugadorUno
             }
             if (jugarCarta)
             {
-                Console.WriteLine($"{Nombre} robó y juega inmediatamente : {cartaRobada}");
+                Console.WriteLine($"{Nombre} robÃ³ y juega inmediatamente : {cartaRobada}");
                 Color? colorParaPasar = null;
                 if (cRobada.Tipo == TipoCarta.CambioColor || cRobada.Tipo == TipoCarta.MasCuatro)
                 {
                     colorParaPasar = ElegirMejorColorSegunMano();
                 }
                 MiMano.RemoverCarta(cartaRobada);
-                contexto.JugarCartaMesa(cartaRobada, colorParaPasar);
+                contexto.JugarCartaEnMesa(cartaRobada, colorParaPasar);
                 GritarUNO();
                 Console.WriteLine($"{Nombre} ha terminado su turno");
                 return;
             }
         }
-        Console.WriteLine($"{Nombre} robó y termina su turno sin jugar.");
+        Console.WriteLine($"{Nombre} robÃ³ y termina su turno sin jugar.");
         GritarUNO();
         Console.WriteLine($"{Nombre} ha terminado su turno.");
     }
@@ -132,3 +131,4 @@ public class JugadorCalculador : JugadorUno
         return cartasJugables[0];
     }
 }
+
