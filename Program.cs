@@ -10,7 +10,17 @@ class Program
     static void Main(string[] args)
     {
 
-        
+        var MazoBlackJack = FabricaDeMazos.CrearMazoBlackjack();
+
+        var JugadoresBJ = new List<JugadorBlackjack>
+        {
+            new JugadorCauteloso (1 , "Felipe", 17),
+            new JugadorArriesgado (2, "Pepe")
+        };
+
+        var DealerBJ = new Dealer(1, "Dealer");
+
+        var JuegoBJ = new JuegoBlackjack(DealerBJ, JugadoresBJ, MazoBlackJack);
 
 
          var mazoUno = FabricaDeMazos.CrearMazoUno();
