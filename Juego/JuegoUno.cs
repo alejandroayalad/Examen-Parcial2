@@ -6,8 +6,8 @@ public class JuegoUno : Juego, IContextoJugadorUno, IGestorJuegoUno
 {
     private PilaDeDescarte pilaDescarte;
     private List<JugadorUno> jugadoresUno;
-    private int indiceJugadorActual;
-    private bool sentidoHorario;
+    
+    private readonly AdministradorDeTurnos _adminTurnos;
     private bool saltarSiguienteTurno;
     private int cartasParaRobar;
     private Color? colorActual;
@@ -17,8 +17,7 @@ public class JuegoUno : Juego, IContextoJugadorUno, IGestorJuegoUno
 
         pilaDescarte = new PilaDeDescarte();
         jugadoresUno = jugadores;
-        indiceJugadorActual = 0;
-        sentidoHorario = true;
+        _adminTurnos = new AdministradorDeTurnos(jugadoresUno);
         saltarSiguienteTurno = false;
         cartasParaRobar = 0;
     }
@@ -64,11 +63,9 @@ public class JuegoUno : Juego, IContextoJugadorUno, IGestorJuegoUno
         Console.WriteLine($"Carta inicial en descarte: {primeraCartaDescarte}");
         Console.WriteLine($"Color actual: {colorActual}");
 
-        indiceJugadorActual = 0;
-        sentidoHorario = true;
+        _adminTurnos.Resetear(); 
         juegoTerminado = false;
-
-        Console.WriteLine($"\nEmpieza: {jugadoresUno[indiceJugadorActual].Nombre}");
+        Console.WriteLine($"\nEmpieza: {_adminTurnos.ObtenerNombreJugadorActual()}");;
     }
 
     public override void JugarRonda()
@@ -76,7 +73,7 @@ public class JuegoUno : Juego, IContextoJugadorUno, IGestorJuegoUno
         if (juegoTerminado)
             return;
 
-        var jugadorActual = jugadoresUno[indiceJugadorActual];
+        var jugadorActual = _adminTurnos.ObtenerJugadorActual();
 
         Console.WriteLine($"\n--- Turno de {jugadorActual.Nombre} ---");
         jugadorActual.MostrarEstado();
@@ -103,7 +100,7 @@ public class JuegoUno : Juego, IContextoJugadorUno, IGestorJuegoUno
         {
             Console.WriteLine($"{jugadorActual.Nombre} pierde su turno.");
             saltarSiguienteTurno = false;
-            AvanzarTurno();
+            _adminTurnos.AvanzarTurno();
             return;
         }
         
@@ -120,43 +117,11 @@ public class JuegoUno : Juego, IContextoJugadorUno, IGestorJuegoUno
         }
         
         // Avanzar al siguiente jugador
-        AvanzarTurno();
+        _adminTurnos.AvanzarTurno();
     }
 
-    private void AvanzarTurno()
-    {
-        if (sentidoHorario)
-        {
-            indiceJugadorActual = (indiceJugadorActual + 1) % jugadores.Count;
-        }
-        else
-        {
-            indiceJugadorActual--;
-            if (indiceJugadorActual < 0)
-            {
-                indiceJugadorActual = jugadoresUno.Count - 1;
-            }
-        }
-    }
-
-    private int ObtenerIndiceSiguienteJugador()
-    {
-        int indiceSiguiente;
-        if (sentidoHorario)
-        {
-            indiceSiguiente = (indiceJugadorActual + 1) % jugadoresUno.Count;
-        }
-        else
-        {
-            indiceSiguiente = indiceJugadorActual - 1;
-            if (indiceSiguiente < 0)
-            {
-                indiceSiguiente = jugadoresUno.Count - 1;
-            }
-        }
-        return indiceSiguiente;
-    }
-
+   
+   
     public override void MostrarResultados()
     {
         Console.WriteLine("\n=== ESTADO FINAL DEL JUEGO ===");
@@ -236,10 +201,10 @@ public class JuegoUno : Juego, IContextoJugadorUno, IGestorJuegoUno
 
     public int ObtenerCantidadDeCartasEnMano()
     {
-        int indiceSiguiente = ObtenerIndiceSiguienteJugador();
-        var siguienteJugador = jugadoresUno[indiceSiguiente];
+        var siguienteJugador = _adminTurnos.ObtenerSiguienteJugador();
+
+        return siguienteJugador.ObtenerConteoCartas();
         
-         return siguienteJugador.ObtenerConteoCartas();
     }
 
     public void JugarCartaEnMesa(ICarta carta, Color? nuevoColor = null)
@@ -265,23 +230,22 @@ public class JuegoUno : Juego, IContextoJugadorUno, IGestorJuegoUno
 
     public void InvertirSentido()
     {
-        sentidoHorario = !sentidoHorario;
-        Console.WriteLine($"Sentido invertido. Ahora: {(sentidoHorario ? "Horario" : "Anti-horario")}");
+        _adminTurnos.InvertirSentido(); // <-- CAMBIAR ESTO (el log ya se movió a la otra clase)
     }
+
 
     public void SaltarTurnoSiguiente()
     {
         saltarSiguienteTurno = true;
-        int indiceSiguiente = ObtenerIndiceSiguienteJugador();
-        Console.WriteLine($"El siguiente jugador ({jugadores[indiceSiguiente].Nombre}) será bloqueado.");
+        Console.WriteLine($"El siguiente jugador ({_adminTurnos.ObtenerNombreSiguienteJugador()}) será bloqueado.");
     }
 
+
     public void SiguienteJugadorRoba(int cantidad)
-    {
-        cartasParaRobar = cantidad;
-        int indiceSiguiente = ObtenerIndiceSiguienteJugador();
-        Console.WriteLine($"{jugadores[indiceSiguiente].Nombre} deberá robar {cantidad} cartas.");
-    }
+{
+    cartasParaRobar = cantidad;
+    Console.WriteLine($"{_adminTurnos.ObtenerNombreSiguienteJugador()} deberá robar {cantidad} cartas.");
+}
 
     public void EstablecerColorActual(Color color)
     {

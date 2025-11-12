@@ -38,7 +38,7 @@ public abstract class Jugador
     }
     public virtual void MostrarEstado()
     {
-
+        Console.WriteLine($"Mano de {Nombre} ({MiMano.ContarCartas()} cartas): [ {MiMano.ToString()} ]");
     }
     public virtual List<ICarta> LimpiarMano()
     {
