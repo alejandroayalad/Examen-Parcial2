@@ -29,12 +29,15 @@ public class JugadorCalculador : JugadorUno
             {
                 cartaParaJugar = SeleccionarCartaDeMenorImpacto(cartasJugables);
             }
+            
             Color? colorParaPasar = null;
+
             if (cartaParaJugar is CartaUno cartaUno &&
                 (cartaUno.Tipo == TipoCarta.CambioColor || cartaUno.Tipo == TipoCarta.MasCuatro))
             {
                 colorParaPasar = ElegirMejorColorSegunMano();
             }
+
             Console.WriteLine($"{Nombre} juega la carta {cartaParaJugar}");
             MiMano.RemoverCarta(cartaParaJugar);
             contexto.JugarCartaEnMesa(cartaParaJugar, colorParaPasar);
@@ -117,7 +120,7 @@ public class JugadorCalculador : JugadorUno
             {
                 return carta;
             }
-        }
+        } 
 
         foreach (var carta in cartasJugables)
         {

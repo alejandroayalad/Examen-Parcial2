@@ -15,7 +15,7 @@ public class JugadorAleatorio : JugadorUno
 
         Color? colorActual = contexto.ObtenerColor();
         List<ICarta> cartasJugables = ObtenerCartasJugables(cartaEnDescarte, colorActual);
-        Console.WriteLine($"[DEBUG] {Nombre} - cartas jugables encontradas: {cartasJugables.Count}");
+        Console.WriteLine($"{Nombre} - cartas jugables encontradas: {cartasJugables.Count}");
 
         if (cartasJugables.Count > 0)
         {

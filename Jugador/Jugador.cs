@@ -20,7 +20,7 @@ public abstract class Jugador
         init => _nombre = value;
     }
 
-     protected Mano MiMano 
+    protected Mano MiMano 
     { 
         get => miMano;
         init => miMano = value;

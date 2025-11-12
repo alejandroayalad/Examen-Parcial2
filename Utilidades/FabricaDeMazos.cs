@@ -56,7 +56,7 @@ public static class FabricaDeMazos
             mazo.AgregarCarta(new CartaUno(TipoCarta.CambioColor, new EfectoCambioColor(), new ReglaComodin()));
         }
 
-       
+
         for (int i = 0; i < 4; i++)
         {
             mazo.AgregarCarta(new CartaUno(TipoCarta.MasCuatro, new EfectoMasCuatro(), new ReglaComodin()));

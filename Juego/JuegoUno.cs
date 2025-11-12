@@ -183,7 +183,7 @@ public class JuegoUno : Juego, IContextoJugadorUno, IGestorJuegoUno
    private void ReciclarPilaDeDescarte()
     {
         // DEBUG: Log para saber cuándo se activa el método y qué hay en la pila
-        Console.WriteLine($"DEBUG: Reciclando... Pila de descarte tiene {pilaDescarte.ContarCartas()} cartas.");
+        Console.WriteLine($"Reciclando... Pila de descarte tiene {pilaDescarte.ContarCartas()} cartas.");
 
         // Guardar la última carta
         ICarta ultimaCarta = pilaDescarte.VerCartaSuperior();
@@ -200,7 +200,7 @@ public class JuegoUno : Juego, IContextoJugadorUno, IGestorJuegoUno
         pilaDescarte.AgregarCarta(ultimaCarta);
         
         // DEBUG: Log para ver cuántas cartas se van a intentar mover
-        Console.WriteLine($"DEBUG: Se moverán {cartasDescarte.Count - 1} cartas al mazo.");
+        Console.WriteLine($"Se moverán {cartasDescarte.Count - 1} cartas al mazo.");
 
         
         if (cartasDescarte.Count > 1)
@@ -247,20 +247,20 @@ public class JuegoUno : Juego, IContextoJugadorUno, IGestorJuegoUno
         pilaDescarte.AgregarCarta(carta);
         Console.WriteLine($"Carta jugada en mesa: {carta}");
         
-        if (carta is CartaUno cartaU)
+        if (carta is CartaUno cartaUno)
         {
             if (nuevoColor.HasValue)
             {
                 colorActual = nuevoColor.Value;
                 Console.WriteLine($"Nuevo color elegido: {colorActual}");
             }
-            else if (cartaU.Color.HasValue)
+            else if (cartaUno.Color.HasValue)
             {
-                colorActual = cartaU.Color.Value;
+                colorActual = cartaUno.Color.Value;
             }
             
-            cartaU.EjecutarEfecto(this, nuevoColor);
-        }
+            cartaUno.EjecutarEfecto(this, nuevoColor);
+        } 
     }
 
     public void InvertirSentido()
@@ -294,6 +294,3 @@ public class JuegoUno : Juego, IContextoJugadorUno, IGestorJuegoUno
     return colorActual;
     }
 }
-
-
-

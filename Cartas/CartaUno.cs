@@ -25,6 +25,7 @@ public class CartaUno : ICarta
 {
 
     private readonly IEfecto _efectoCarta;
+
     private readonly IReglaJuego _reglaJuego;
     private int? _numero;
 
@@ -44,7 +45,7 @@ public class CartaUno : ICarta
     public TipoCarta Tipo { get; private init; }
    
 
-    
+    //Numerica
     public CartaUno(Color color, TipoCarta tipo, int numero)
     {
         if (tipo != TipoCarta.Numero)
@@ -57,8 +58,9 @@ public class CartaUno : ICarta
         _efectoCarta = new EfectoNulo();
         _reglaJuego = new ReglaNumerica();
     }
-
     
+
+    //Especial
     public CartaUno(Color color, TipoCarta tipo, IEfecto efectoCarta, IReglaJuego reglaJuego)
     {
 
@@ -73,15 +75,16 @@ public class CartaUno : ICarta
         Numero = null;
     }
 
-    
+//comodin
+
     public CartaUno(TipoCarta tipo, IEfecto efectoCarta, IReglaJuego reglaJuego)
     {
 
         if (tipo != TipoCarta.CambioColor && tipo != TipoCarta.MasCuatro)
         {
-            throw new ArgumentException ($"Este constructor es solo para comodines. Tipo recibido: {tipo}", nameof(tipo));
+            throw new ArgumentException($"Este constructor es solo para comodines. Tipo recibido: {tipo}", nameof(tipo));
         }
-        Color = null; 
+        Color = null;
         Tipo = tipo;
         _efectoCarta = efectoCarta;
         _reglaJuego = reglaJuego;

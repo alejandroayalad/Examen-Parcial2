@@ -35,24 +35,24 @@ public class ReglaComodin : IReglaJuego
     }
 }
 
-public class ReglaEspecial : IReglaJuego 
+public class ReglaEspecial : IReglaJuego
 {
     public bool EsMovimientoValido(CartaUno cartaJugador, CartaUno cartaDescarte, Color? colorActual)
     {
-    
-        if (cartaJugador == null) 
+
+        if (cartaJugador == null)
             throw new ArgumentNullException(nameof(cartaJugador));
-        if (cartaDescarte == null) 
+        if (cartaDescarte == null)
             throw new ArgumentNullException(nameof(cartaDescarte));
         if (!colorActual.HasValue)
             throw new InvalidOperationException(
                 "Las cartas especiales requieren un color actual definido");
-        
-    
+
+
         if (!cartaJugador.Color.HasValue)
             return false;
-        
-      
+
+
         return cartaJugador.Color.Value == colorActual.Value ||
                cartaJugador.Tipo == cartaDescarte.Tipo;
     }

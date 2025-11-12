@@ -6,9 +6,10 @@ public class EfectoNulo : IEfecto
 {
     public void EjecutarEfecto(IGestorJuegoUno gestor, Color? colorElegido)
     {
-        //Sirve para pasar el turno sin ning�n efecto.
+        //Sirve para pasar el turno sin ningún efecto.
     }
 }
+
 
 public class EfectoInvertirSentido : IEfecto
 {
@@ -35,7 +36,7 @@ public class EfectoMasDos : IEfecto
         gestor.SiguienteJugadorRoba(2);
         gestor.SaltarTurnoSiguiente();
  // hace que el jugador siguiente al que usa la carta coma dos, ya que gestor.SiguienteJugadorRoba,recibe de parametro la cantidad 2
- // Tambi�n salta el turno del siguiente jugador al que la usa
+ // También salta el turno del siguiente jugador al que la usa
     }
 }
 
@@ -45,8 +46,19 @@ public class EfectoMasCuatro : IEfecto
     {
         gestor.SiguienteJugadorRoba(4);
         gestor.SaltarTurnoSiguiente();
- // hace que el jugador siguiente al que usa la carta coma dos, ya que gestor.SiguienteJugadorRoba,recibe de parametro la cantidad 4
- // Tambi�n salta el turno del siguiente jugador al que la usa
+        // hace que el jugador siguiente al que usa la carta coma dos, ya que gestor.SiguienteJugadorRoba,recibe de parametro la cantidad 4
+        // Tambi�n salta el turno del siguiente jugador al que la usa
+    }
+}
+
+public class EfectoMasCinco : IEfecto
+{
+     public void EjecutarEfecto(IGestorJuegoUno gestor, Color? colorElegido)
+    {
+        gestor.SiguienteJugadorRoba(5);
+        gestor.SaltarTurnoSiguiente();
+        // hace que el jugador siguiente al que usa la carta coma dos, ya que gestor.SiguienteJugadorRoba,recibe de parametro la cantidad 4
+        // Tambi�n salta el turno del siguiente jugador al que la usa
     }
 }
 
