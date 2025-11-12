@@ -50,6 +50,25 @@ public abstract class JugadorUno : Jugador
     }
 
 
+    public List<ICarta> ObtenerCartasJugables(ICarta cartaEnDescarte, Color? colorActual)
+    {
+        List<ICarta> cartasJugables = new List<ICarta>();
+
+        foreach (var carta in miMano.Cartas)
+        {
+            if (carta is CartaUno cartaUnoActual)
+            {
+                if (cartaUnoActual.EsMovimientoValido(cartaEnDescarte, colorActual))
+                {
+                    cartasJugables.Add(carta);
+                }
+            }
+        }
+        Console.WriteLine($"[DEBUG] {Nombre} - cartas jugables encontradas: {cartasJugables.Count}");
+        return cartasJugables;
+    }
+
+
     public void GritarUNO()
     {
         if (MiMano.ContarCartas() == 1)
